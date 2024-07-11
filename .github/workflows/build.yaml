@@ -13,3 +13,8 @@ jobs:
           docker build --tag builder:latest .
           docker run -v /var/run/docker.sock:/var/run/docker.sock -v $(which docker):/usr/bin/docker -v ./artifact/:/artifact builder:latest
           ls -alh artifact/
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: artifact
+          path: artifact/
