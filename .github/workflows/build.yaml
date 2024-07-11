@@ -5,9 +5,9 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - name: Check out source code
+      - name: Check out source code
         uses: actions/checkout@v4
-    - name: Build nitro image
+      - name: Build nitro image
         run: |
           mkdir artifact
           docker build --tag builder:latest .
@@ -15,4 +15,3 @@ jobs:
           chmod +x check-folder.sh
           ./check-folder.sh
           ls -alh artifact/
-    
