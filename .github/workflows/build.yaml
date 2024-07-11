@@ -11,7 +11,7 @@ jobs:
         run: |
           mkdir artifact
           docker build --tag builder:latest .
-          docker run -v /var/run/docker.sock:/var/run/docker.sock -v $(which docker):/usr/bin/docker -v artifact:/artifact -it amazonlinux:2023
+          docker run -v /var/run/docker.sock:/var/run/docker.sock -v $(which docker):/usr/bin/docker -v artifact:/artifact -d amazonlinux:2023
           chmod +x check-folder.sh
           ./check-folder.sh
           ls -alh artifact/
