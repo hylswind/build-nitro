@@ -5,5 +5,6 @@ FROM busybox
 
 ENV HELLO="Hello from the enclave side!"
 COPY hello.sh /bin/hello.sh
+RUN chmod +x /bin/hello.sh
 
 CMD ["/bin/hello.sh"]
