@@ -1,0 +1,18 @@
+name: build-workflow
+on:
+  workflow_dispatch:
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Check out source code
+        uses: actions/checkout@v4
+    - name: Build nitro image
+        run: |
+          mkdir artifact
+          docker build --tag builder:latest .
+          docker run -v /var/run/docker.sock:/var/run/docker.sock -v $(which docker):/usr/bin/docker -v artifact:/artifact -it amazonlinux:2023
+          chmod +x check-folder.sh
+          ./check-folder.sh
+          ls -alh artifact/
+    
